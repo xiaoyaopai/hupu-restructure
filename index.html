@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>虎扑体育</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.0/css/bulma.css">
+</head>
+<script>
+/**
+ * JS 动态设定 document 的 font-size
+ * 以 375 的设备宽度为基准，375 下 10px 为 1rem
+ */
+(function(doc, win) {
+    var docEl = doc.documentElement,
+        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+
+        recalc = function() {
+            var clientWidth = document.innerWidth;
+            if (!clientWidth) {
+                return;
+            }
+            docEl.style.fontSize = 10 * (clientWidth / 375) + 'px';
+        };
+
+    if (!doc.addEventListener) return;
+    win.addEventListener(resizeEvt, recalc, false);
+    doc.addEventListener('DOMContentLoaded', recalc, false);
+    recalc();
+    window.recalc = recalc;
+})(document, window);
+</script>
+<body>
+	<div id="app"></div>
+	<!-- built files will be auto injected -->
+</body>
+</html>
